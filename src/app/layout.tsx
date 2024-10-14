@@ -7,6 +7,7 @@ import { Poppins } from 'next/font/google'
 import { Navbar } from "@/components";
 import "./globals.css";
 
+import { cn } from "@/helpers/cn";
 
 const poppins = Poppins({
   style: 'normal',
@@ -26,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} bg-slate-900 text-white`}>
+      <body className={cn("bg-slate-900 text-white", poppins.className)}>
         <div className="flex w-full">
           <Navbar />  
           

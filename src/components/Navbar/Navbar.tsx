@@ -1,23 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome" ;
 import { faUser, faHome, faGamepad, faRankingStar, faRoute } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "@/helpers/cn";
 
-const NavBarList = ({ children}: {children: React.ReactNode}) => {
+type NavbarProps = React.ComponentProps<"nav">;
+type NavbarListProps = React.ComponentProps<"ul">;
+type NavbarListItemProps = React.ComponentProps<"li">;
+
+const NavBarList = ({ children, ...props }: NavbarListProps) => {
   return (
-    <ul className="my-4 border-indigo-400/20 hover:border-indigo-400/40 w-full">
+    <ul className="my-4 border-indigo-400/20 hover:border-indigo-400/40 w-full" {...props}>
       { children }
     </ul>
   );
 };
 
-const NavBarListItem = ({ children}: {children: React.ReactNode}) => {
+const NavBarListItem = ({ children, ...props }: NavbarListItemProps) => {
   return (
-    <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-indigo-400/40 cursor-pointer">
+    <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-indigo-400/40 cursor-pointer" {...props}>
       { children }
     </li>
   );
 };
 
-export const Navbar = () => {
+export const Navbar = ({ className, ...props}: NavbarProps) => {
   return(
     // SIDEBAR 
     
@@ -27,7 +32,7 @@ export const Navbar = () => {
           <img src="/images/games.png" alt="Games Logo" />
         </div>
 
-        <nav className="flex flex-col mt-8 w-full gap-5 border-t-2 border-b-2 border-indigo-400/20 hover:border-indigo-400/40">
+        <nav className={cn("flex flex-col mt-8 w-full gap-5 border-t-2 border-b-2 border-indigo-400/20 hover:border-indigo-400/40", className)} {...props}>
           <NavBarList>  
             <NavBarListItem>
               <FontAwesomeIcon icon={ faHome } className="w-4 h4 mr-2" /> Home              
