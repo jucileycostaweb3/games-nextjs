@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome" ;
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faHome, faGamepad, faRankingStar, faRoute } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = () => {
   return(
@@ -13,10 +13,22 @@ export const Navbar = () => {
 
         <nav className="flex flex-col mt-8 w-full gap-5">
           <ul className="my-4 border-indigo-400/20 hover:border-indigo-400/60 w-full">
-            <li className="my-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">Home</li>
-            <li className="my-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">Games</li>
-            <li className="my-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">Top 10</li>
-            <li className="my-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">Walkthroughs</li>
+            <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">
+              <FontAwesomeIcon icon={ faHome } className="w-4 h4 mr-2" />
+              Home
+            </li>
+            <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">
+              <FontAwesomeIcon icon={ faGamepad } className="w-4 h4 mr-2" />
+              Games
+            </li>
+            <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">
+              <FontAwesomeIcon icon={ faRankingStar } className="w-4 h4 mr-2" />
+              Top 10
+            </li>
+            <li className="my-2 mx-2 p-3 rounded-lg bg-transparent hover:bg-slate-800 cursor-pointer">
+              <FontAwesomeIcon icon={ faRoute } className="w-4 h4 mr-2" />
+              Walkthroughs
+            </li>
           </ul>
         </nav>
       </div>
