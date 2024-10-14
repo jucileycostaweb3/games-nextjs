@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { Navbar } from "@/components";
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { config } from "@fortawesome/fontawesome-svg-core"; 
+config.autoAddCss = false;
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import type { Metadata } from "next";
+import { Poppins } from 'next/font/google'
+import { Navbar } from "@/components";
+import "./globals.css";
+
+
+const poppins = Poppins({
+  style: 'normal',
+  weight: '400',
+  subsets: ['latin'],
+}) 
 
 export const metadata: Metadata = {
   title: "Games App",
@@ -26,10 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex gap-2 bg-black text-white`}>
-        <Navbar />  
-        
-        {children}      
+      <body className={`${poppins.className} bg-slate-900 text-white`}>
+        <div className="flex w-full">
+          <Navbar />  
+          
+          {children} 
+        </div>
+   
       </body>
     </html>
   );
