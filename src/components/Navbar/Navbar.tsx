@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NavbarProps } from "./types";
 import { NavBarList } from "./NavBarList";
 import { NavbarListItemLink } from "./NavbarListItemLink";
+import Image from "next/image";
 
 export const Navbar = ({ className, ...props}: NavbarProps) => {
   return(
@@ -12,8 +13,8 @@ export const Navbar = ({ className, ...props}: NavbarProps) => {
     
     <aside className="mr-4 border-r-2 border-indigo-400/20 hover:border-indigo-400/40 hidden sm:flex w-full max-w-[200px] min-h-screen relative bg-slate-900 flex-col px-2 py-5">
       <div className="fixed">
-        <div className="hover:scale-125 duration-300 w-32 h-32 z-30">
-          <img src="/images/games.png" alt="Games Logo" />
+        <div className="z-30 hover:scale-125 duration-300">
+          <Image src="/images/games.png" width={128} height={128} alt="Games Logo"/>
         </div>
 
         <nav className={cn("flex flex-col mt-8 w-full gap-5 border-t-2 border-b-2 border-indigo-400/20 hover:border-indigo-400/40", className)} {...props}>
