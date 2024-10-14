@@ -2,37 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome" ;
 import { faUser, faHome, faGamepad, faRankingStar, faRoute } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/helpers/cn";
 import Link from "next/link";
-
-type NavbarProps = React.ComponentProps<"nav">;
-type NavbarListProps = React.ComponentProps<"ul">;
-type NavbarListItemProps = React.ComponentProps<"li">;
-type NavbarListItemLinkProps = React.ComponentProps<typeof Link>;
-
-const NavBarList = ({ children, ...props }: NavbarListProps) => {
-  return (
-    <ul className="my-4 border-indigo-400/20 hover:border-indigo-400/40 w-full" {...props}>
-      { children }
-    </ul>
-  );
-};
-
-const NavBarListItem = ({ children, ...props }: NavbarListItemProps) => {
-  return (
-    <li className="my-2 mx-2 p-3 rounded-lg hover:bg-indigo-400/40 cursor-pointer" {...props}>
-      { children }
-    </li>
-  );
-};
-
-const NavbarListItemLink = ({ href, children, className, ...props }: NavbarListItemLinkProps) => {
-  return (
-    <NavBarListItem className={cn("p-0", className)}>
-      <Link href={href} className="my-2 p-3 flex items-center rounded-lg hover:bg-indigo-400/40" {...props}>
-        { children }
-      </Link>
-    </NavBarListItem>
-  );
-}
+import { NavbarProps } from "./types";
+import { NavBarList } from "./NavBarList";
+import { NavbarListItemLink } from "./NavbarListItemLink";
 
 export const Navbar = ({ className, ...props}: NavbarProps) => {
   return(
