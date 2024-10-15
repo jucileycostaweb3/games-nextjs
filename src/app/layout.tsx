@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("bg-slate-900 text-white", poppins.className)}>
+      <body className={cn("bg-slate-890 text-slate-300", poppins.className)}>
         <div className="flex w-full">
           <Navbar />  
           
