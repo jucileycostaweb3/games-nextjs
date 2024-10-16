@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
-const Article = {
+const Articles = {
   get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
     
     const take = Math.min(limit, MAX_RECORDS);
@@ -19,6 +19,13 @@ const Article = {
     });
     return records;
   },
+
+  count: async ({ where = {} }) => {
+    const count = await prisma.article.count({ 
+      where, 
+    });    
+    return count;
+  },
 };
 
-export default Article;
+export default Articles;
