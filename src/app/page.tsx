@@ -1,7 +1,9 @@
 import { Hero, Pagination } from "@/components";
+import { getArticleImage, getArticleUrl } from "@/helpers/articles";
 import ArticlesService from "@/services/Articles";
 import GamesService from "@/services/Games";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({searchParams}: {searchParams?: {page?: string, limit?: string}}) {
   
@@ -22,10 +24,10 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
           {latestArticles.data.map((article) => {
             return (
-              <div key={article.title} className="flex-center relative overflow-hidden">
+              <Link key={article.title} href={getArticleUrl(article.slug)} className="flex-center relative overflow-hidden">
                 <div className="w-full h-full">
                   <Image className="w-full h-full object-cover transition duration-500 hover:scale-105" 
-                    src={`/assets/images/articles/${article.image}`} 
+                    src={getArticleImage(article.image)} 
                     width={1920} 
                     height={1080} 
                     alt={article.title}
@@ -34,7 +36,7 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
                 <p className="absolute bottom-0 pt-6 pb-2 px-2 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent w-full">
                   {article.title}
                 </p>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -51,7 +53,7 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
                     <div className="flex items-center">
                       <div className="h-40 rounded-lg overflow-hidden ml-1">
                         <Image className="w-full h-full object-cover transition duration-500 hover:scale-105 rounded-lg" 
-                          src={`/assets/images/articles/${article.image}`} 
+                          src={getArticleImage(article.image)} 
                           width={1920} 
                           height={1080} 
                           alt={article.title}
@@ -63,7 +65,9 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
                         {article.title}
                       </h2>
                       <p className="flex-grow">{article.excerpt}</p>
-                      <button className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max">Ler mais</button>
+                      <Link href={getArticleUrl(article.slug)} className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max">
+                        Ler mais
+                      </Link>
                     </div>
                   </div>
                 );

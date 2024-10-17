@@ -11,7 +11,7 @@ export default async function Games({searchParams}: {searchParams?: {page?: stri
   
   return (
     <main className="flex flex-col w-full">
-      <div className="container mx-auto my-4">
+      <div className="container mx-3 my-4">
         <h1 className="text-3xl my-4">Games</h1>  
         <div className="grid grid-cols-4 gap-x-4 gap-y-12">
           {games.data.map((game) => {
