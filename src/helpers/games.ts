@@ -3,3 +3,7 @@ const BASE_GAME_IMAGE_URL = "https://raw.githubusercontent.com/emersonbroga/nint
 export const getGameImage = (image: string) => {
   return `${BASE_GAME_IMAGE_URL}${image}`;
 };
+
+export const getGameUrl = (slug: string) => {
+  return `/games/${slug}`;
+};

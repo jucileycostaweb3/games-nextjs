@@ -1,13 +1,14 @@
-import { getGameImage } from "@/helpers/games";
+import { getGameImage, getGameUrl } from "@/helpers/games";
 import { Games } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 const ScrollableGameList = ({ games }: {games: any[]}) => {
   return (
     <>
       {games.map((game) => {
         return (
-          <div key={game.id} className="h-32 w-auto">
+          <Link href={getGameUrl(game.slug)} key={game.id} className="h-32 w-auto">
             <Image
               className="h-full w-full object-cover brightness-75 hover:brightness-100"
               src={getGameImage(game.image)}
@@ -15,7 +16,7 @@ const ScrollableGameList = ({ games }: {games: any[]}) => {
               width={175}
               height={128}
             />
-          </div>  
+          </Link>  
         );
       })}
     </>

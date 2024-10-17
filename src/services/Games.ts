@@ -2,6 +2,11 @@ import { getRandomIntArrayInRange } from "@/helpers/math";
 import Games from "@/libs/database/Games";
 
 const GamesService = {
+  
+  getGameBySlug: async (slug: string) => {
+    return Games.getOne({ where: { slug } });
+  },
+
   getGamesList : async ( page = 1, limit = 10) => {
     const offset = (page - 1) * limit;
     const data = await Games.get({ limit, offset });

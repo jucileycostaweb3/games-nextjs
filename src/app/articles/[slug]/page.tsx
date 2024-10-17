@@ -13,8 +13,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   }
 
   return (
-    <main className="flex flex-col w-full">
-      <div className="container mx-auto my-6">
+    <div className="flex flex-col w-full">
+      <div className="container mx-3 my-6">
         <div className="w-2/3">
           <h1 className="text-3xl my-6">{article.title}</h1>
           <Image
@@ -30,6 +30,6 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
