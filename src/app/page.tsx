@@ -3,9 +3,9 @@ import ArticlesService from "@/services/Articles";
 import Image from "next/image";
 
 export default async function Home({searchParams}: {searchParams?: {page?: string, limit?: string}}) {
+  
   const currentPage = Number(searchParams?.page) || 1;
   const limit = Number(searchParams?.limit) || 10;
-
   const articles = await ArticlesService.getHomeArticles(currentPage, limit);
   const latestArticles = await ArticlesService.getHomeLatestArticles();
   
