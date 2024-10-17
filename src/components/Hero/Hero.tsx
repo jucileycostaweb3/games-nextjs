@@ -35,7 +35,7 @@ export const Hero = ({ games }: {games: any[]}) => {
   } as React.CSSProperties;
 
   return (
-    <div className="container mx-3 my-6 h-[42vh] flex-center gap-2 p-4">
+    <div className="container mx-3 my-10 h-[42vh] flex-center gap-2 p-4">
       <div className="flex-center">
         <div className="flex-center flex-col">
           <Image src="/assets/images/nintendo-64-logo.png" alt="Nintendo 64 logo" width={160} height={150} />

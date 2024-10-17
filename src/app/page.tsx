@@ -1,9 +1,11 @@
 import { Hero, Pagination } from "@/components";
 import { getArticleImage, getArticleUrl } from "@/helpers/articles";
+import { HomeLatestArticles, HomeLatestArticlesSkeleton } from "@/sections";
 import ArticlesService from "@/services/Articles";
 import GamesService from "@/services/Games";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default async function Home({searchParams}: {searchParams?: {page?: string, limit?: string}}) {
   
@@ -11,36 +13,15 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
   const limit = Number(searchParams?.limit) || 10;
   
   const articles = await ArticlesService.getHomeArticles(currentPage, limit);
-  const latestArticles = await ArticlesService.getHomeLatestArticles();
-
   const heroGames = await GamesService.getRandomGames(40);
   
   return (
     <main className="flex flex-col w-full">
       <Hero games={heroGames.data} />  
 
-      <div className="container mx-3 my-10">
-        <h2 className="text-3xl my-6 underline">Latest Articles</h2>
-        <div className="grid grid-cols-4 gap-4 h-[35vh]">
-          {latestArticles.data.map((article) => {
-            return (
-              <Link key={article.title} href={getArticleUrl(article.slug)} className="flex-center relative overflow-hidden">
-                <div className="w-full h-full">
-                  <Image className="w-full h-full object-cover transition duration-500 hover:scale-105" 
-                    src={getArticleImage(article.image)} 
-                    width={1920} 
-                    height={1080} 
-                    alt={article.title}
-                  />
-                </div>
-                <p className="absolute bottom-0 pt-6 pb-2 px-2 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent w-full">
-                  {article.title}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+      <Suspense fallback={<HomeLatestArticlesSkeleton />}>
+        <HomeLatestArticles />
+      </Suspense>
 
       <div className="container mx-3 my-10">
         <h3 className="text-2xl my-6 underline">Articles</h3>

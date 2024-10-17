@@ -15,7 +15,7 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
   return ( 
     <div className="flex flex-col w-full">
       <div className="container mx-3 my-4">
-        <div className="w-2/3">
+        <div className="w-2/3 h-2/3">
           <h1 className="text-3xl my-6">{game.title}</h1>
           <Image
             className="my-6 h-full w-full object-cover rounded-lg"
