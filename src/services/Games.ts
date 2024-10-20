@@ -31,7 +31,7 @@ const GamesService = {
 
     const ids = getRandomIntArrayInRange(0, total, limit);
     const where = { id: { in: ids } };
-    const data = await Games.get({ where, offset });
+    const data = await Games.get({ where, limit });
     const totalPages = Math.ceil(total / limit);
 
     return {
