@@ -20,16 +20,16 @@ export type SignUpState = {
 
 const validateSignUpForm = (formData: FormData) => {
   const checkPasswords = (data: any) => data.password === data.passwordConfirmation;
-  const checkPasswordsErros = { message: "Password confirmation doesn't match", path: ["passwordConfirmation"] };
+  const checkPasswordsError = { message: "Password confirmation doesn't match.", path: ["passwordConfirmation"] };
 
-  const userSchema = z
-    .object({
-      name: z.string().min(3, "Name must have at least 3 chars"),
-      email: z.string().email("Email invalid"),
-      password: z.string().min(10, "Password must have at least 10 chars"),
-      passwordConfirmation: z.string().min(10, "Passowrd confirmation must have at least 10 chars"),
-    })
-    .refine(checkPasswords, checkPasswordsErros);
+  const userSchema = z.object(
+    {
+      name: z.string().min(3, "Name must have at least 3 characters."),
+      email: z.string().email("Email invalid."),
+      password: z.string().min(10, "Password must have at least 10 characters."),
+      passwordConfirmation: z.string().min(10, "Password confirmation must have at least 10 characters."),
+    }
+  ).refine(checkPasswords, checkPasswordsError);
 
   try {
     userSchema.parse(Object.fromEntries(formData));
