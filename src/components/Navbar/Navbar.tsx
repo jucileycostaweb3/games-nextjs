@@ -1,3 +1,4 @@
+import { handleSignOutForm } from "@/app/auth/sign-out/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome" ;
 import { faUser, faHome, faGamepad, faRankingStar, faRoute } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/helpers/cn";
@@ -6,8 +7,9 @@ import { NavbarProps } from "./types";
 import { NavBarList } from "./NavBarList";
 import { NavbarListItemLink } from "./NavbarListItemLink";
 import Image from "next/image";
+import { FormButton } from "@/components";
 
-export const Navbar = ({ className, ...props}: NavbarProps) => {
+export const Navbar = ({ className, user, ...props}: NavbarProps) => {
   return(
     // SIDEBAR 
     
@@ -38,11 +40,36 @@ export const Navbar = ({ className, ...props}: NavbarProps) => {
         </nav>
       </div>
 
-      <div className="flex items-center left-8">
-        <Link href="/user" className="flex items-center justify-center w-16 h-16 rounded-full bg-slate-900 z-30 fixed top-[450px] left-11 hover:bg-indigo-400/40 duration-300">
-          <FontAwesomeIcon icon={ faUser } className="w-9 h-9" />
-        </Link>
-      </div>
+      { 
+        user ? (
+          <div className="flex items-center left-8">
+            <Link href="/user" className="flex items-center justify-center w-16 h-16 rounded-full bg-slate-900 z-30 fixed top-[450px] left-11 hover:bg-indigo-400/40 duration-300">
+              <FontAwesomeIcon icon={ faUser } className="w-9 h-9" />
+            </Link>
+            
+            <div className="fixed top-[515px] left-14">
+              {user.name}
+            </div>
+
+            <div className="fixed top-[550px] left-8">
+              <FormButton action={ handleSignOutForm} className="flex items-center justify-center w-24 h-9 rounded-full bg-slate-900 hover:bg-indigo-400/40 duration-300">Log out</FormButton>  
+            </div>      
+          </div>
+
+        ) : (
+          <div className="flex items-center left-8">
+            <Link href="/auth/sign-in" className="flex items-center justify-center w-16 h-16 rounded-full bg-slate-900 z-30 fixed top-[450px] left-11 hover:bg-indigo-400/40 duration-300">
+              <FontAwesomeIcon icon={ faUser } className="w-9 h-9" />
+            </Link>
+
+            <div className="fixed top-[515px] left-14">
+              <Link href="/auth/sign-in">
+                Login
+              </Link>
+            </div>
+          </div>
+        )
+      }
     </aside>
 
     // FIM SIDEBAR
