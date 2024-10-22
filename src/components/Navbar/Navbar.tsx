@@ -52,7 +52,7 @@ export const Navbar = ({ className, user, ...props}: NavbarProps) => {
             </div>
 
             <div className="fixed top-[550px] left-8">
-              <FormButton action={ handleSignOutForm} className="flex items-center justify-center w-24 h-9 rounded-full bg-slate-900 hover:bg-indigo-400/40 duration-300">Log out</FormButton>  
+              <FormButton action={ handleSignOutForm } className="flex items-center justify-center w-24 h-9 rounded-full bg-slate-900 hover:bg-indigo-400/40 duration-300">Log out</FormButton>  
             </div>      
           </div>
 
