@@ -33,6 +33,5 @@ export const updateSession = async () => {
 };
 
 export const logout = async () => {
-  // Destroy the session.
   cookies().set(SESSION_NAME, "", { expires: new Date(0) });
 };
