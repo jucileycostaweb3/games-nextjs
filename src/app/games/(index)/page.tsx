@@ -17,10 +17,10 @@ export default async function Games({searchParams}: {searchParams?: {page?: stri
         <div className="grid grid-cols-4 gap-x-4 gap-y-12">
           {games.data.map((game) => {
             return ( 
-              <Link href={getGameUrl(game.slug)} key={game.id} className="flex-center flex-col relative overflow-hidden">
+              <Link href={ getGameUrl(game.slug) } key={game.id} className="flex-center flex-col relative overflow-hidden">
                 <div className="w-full h-full">
                   <Image className="w-full h-full object-cover transition duration-500 hover:scale-105" 
-                    src={getGameImage(game.image)} 
+                    src={ getGameImage(game.image) } 
                     width={1920} 
                     height={1080} 
                     alt={game.title}

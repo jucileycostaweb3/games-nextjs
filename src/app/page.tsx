@@ -23,9 +23,9 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
           {latestArticles.data.map((article) => {
             return (
-              <Link key={article.title} href={getArticleUrl(article.slug)} className="flex-center relative overflow-hidden w-full">
+              <Link key={article.title} href={ getArticleUrl(article.slug) } className="flex-center relative overflow-hidden w-full">
                 <Image className="h-full object-cover transition duration-500 hover:scale-105" 
-                  src={getArticleImage(article.image)} 
+                  src={ getArticleImage(article.image) } 
                   width={1920} 
                   height={1080} 
                   alt={article.title}
@@ -50,7 +50,7 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
                     <div className="flex items-center">
                       <div className="h-40 rounded-lg overflow-hidden ml-1">
                         <Image className="w-full h-full object-cover transition duration-500 hover:scale-105 rounded-lg" 
-                          src={getArticleImage(article.image)} 
+                          src={ getArticleImage(article.image) } 
                           width={1920} 
                           height={1080} 
                           alt={article.title}
@@ -62,7 +62,7 @@ export default async function Home({searchParams}: {searchParams?: {page?: strin
                         {article.title}
                       </h2>
                       <p className="flex-grow">{article.excerpt}</p>
-                      <Link href={getArticleUrl(article.slug)} className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max">
+                      <Link href={ getArticleUrl(article.slug) } className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max">
                         Ler mais
                       </Link>
                     </div>
