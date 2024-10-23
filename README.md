@@ -8,6 +8,6 @@ Project at study level (through Emerson Broga's course) for understanding and be
 
 ## Stack Used
 
-**Front-end:** NextJS 14, TailwindCSS.__
+**Front-end:** NextJS 14, TailwindCSS.
 
 **Back-end:** NextJS 14, Prisma, SQlite.
